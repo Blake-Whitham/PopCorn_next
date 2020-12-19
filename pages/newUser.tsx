@@ -3,19 +3,22 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
-const stringHash = require('string-hash');
 
-export default function Login() {
-  const { register, handleSubmit, errors } = useForm(); // initialize the hook
+const NewUser: React.FC = () => {
+  const {
+    register,
+    handleSubmit,
+    errors
+  } = useForm(); // initialize the hook
   // const [error, setError] = useState(false);
   const onSubmit = (data) => {
-    // eslint-disable-next-line no-param-reassign
-    data.password = stringHash(`${data.password + data.userName}`);
     axios
       .post('/newUser', data)
       .then(() => props.setUser(data.userName))
       .catch(() => setError(true));
   };
+
+
 
   return (
     <div>
@@ -37,17 +40,17 @@ export default function Login() {
           ref={register}
           type="password"
         />
-        {errors.password && 'Password is required.'}
+        {errors.password1 && 'Password is required.'}
       </label>
       <br />
       <label htmlFor="password2">
         <input
           id="password2"
           name="password2"
-          ref={register}
+          ref={register({required: true, minLength: 8, })}
           type="password"
         />
-        {errors.password && 'Password is required.'}
+        {errors.password2 && 'Password is required.'}
       </label>
       <br />
       <button type="button">
@@ -60,3 +63,4 @@ export default function Login() {
     </div>
   )
 }
+export default NewUser;

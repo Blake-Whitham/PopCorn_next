@@ -4,6 +4,6 @@ type Data = {
   name: string
 };
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
+export default (req: NextApiRequest, res: NextApiResponse<Data>) => {
   res.status(200).json({ phrase: 'hello world' })
 }
