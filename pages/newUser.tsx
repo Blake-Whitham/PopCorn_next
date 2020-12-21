@@ -10,11 +10,17 @@ const NewUser: React.FC = () => {
     handleSubmit,
     errors
   } = useForm(); // initialize the hook
+
+  type userData = {
+    name: string,
+    password: string,
+    email: string
+  }
   // const [error, setError] = useState(false);
-  const onSubmit = (data) => {
+  const onSubmit = (userData) => {
     axios
-      .post('/newUser', data)
-      .then(() => props.setUser(data.userName))
+      .post('/newUser', userData)
+      .then(() => props.setUser(userData.userName))
       .catch(() => setError(true));
   };
 
@@ -37,7 +43,7 @@ const NewUser: React.FC = () => {
         <input
           id="password1"
           name="password1"
-          ref={register}
+          ref={register({required: true, minLength: 8, })}
           type="password"
         />
         {errors.password1 && 'Password is required.'}
