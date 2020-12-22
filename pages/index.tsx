@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import stringHash from 'string-hash';
 
-export default function Login() {
+const Login: React.FC = () => {
   const { register, handleSubmit, errors } = useForm(); // initialize the hook
   const [error, setError] = useState(false);
   const onSubmit = (data) => {
@@ -50,3 +50,4 @@ export default function Login() {
     </div>
   )
 }
+export default Login;

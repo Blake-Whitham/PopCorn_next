@@ -2,8 +2,8 @@ import Router from 'next/router';
 import firebase from "firebase/app";
 import { useState } from "react";
 
-import clsx from 'clsx';
-import { FormControl, FormHelperText, IconButton, InputLabel, InputAdornment, Input} from '@material-ui/core';
+import { Button, FormControl, FormHelperText,
+  IconButton, InputLabel, InputAdornment, Input} from '@material-ui/core';
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
@@ -13,9 +13,15 @@ import "firebase/auth";
 
 import initFirebase from "../services/firebase";
 
-initFirebase();
+// initFirebase();
 
+// var admin = require("firebase-admin");
 
+// var serviceAccount = require("path/to/serviceAccountKey.json");
+
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount)
+// });
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -50,6 +56,10 @@ export default function ValidationTextFields() {
     password: '',
     showPassword: false,
   });
+
+  const handleSubmit = () => {
+
+  };
 
   const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [prop]: event.target.value });
@@ -102,6 +112,7 @@ export default function ValidationTextFields() {
         />
       </FormControl>
     </div>
+    <Button type="submit">Submit</Button>
     </div>
   );
 }
