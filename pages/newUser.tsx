@@ -18,10 +18,10 @@ const NewUser: React.FC = () => {
   }
   // const [error, setError] = useState(false);
   const onSubmit = (userData) => {
-    axios
-      .post('/newUser', userData)
-      .then(() => props.setUser(userData.userName))
-      .catch(() => setError(true));
+    // axios
+    //   .post('/newUser', userData)
+    //   .then(() => props.setUser(userData.userName))
+    //   .catch(() => setError(true));
   };
 
 

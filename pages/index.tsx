@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
-const stringHash = require('string-hash');
+import stringHash from 'string-hash';
 
 export default function Login() {
   const { register, handleSubmit, errors } = useForm(); // initialize the hook
@@ -11,10 +11,10 @@ export default function Login() {
   const onSubmit = (data) => {
     // eslint-disable-next-line no-param-reassign
     data.password = stringHash(`${data.password + data.userName}`);
-    axios
-      .post('/check', data)
-      .then(() => props.setUser(data.userName))
-      .catch(() => setError(true));
+    // axios
+    //   .post('/check', data)
+    //   .then(() => \\setUser(data.userName))
+    //   .catch(() => setError(true));
   };
 
   return (
